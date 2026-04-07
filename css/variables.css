@@ -1,0 +1,65 @@
+/* Dracula Theme Tokens */
+:root {
+  /* Dracula palette */
+  --bg:           #282a36;
+  --bg-darker:    #21222c;
+  --bg-lighter:   #343746;
+  --current-line: #44475a;
+  --selection:    #44475a;
+  --fg:           #f8f8f2;
+  --comment:      #6272a4;
+  --cyan:         #8be9fd;
+  --green:        #50fa7b;
+  --orange:       #ffb86c;
+  --pink:         #ff79c6;
+  --purple:       #bd93f9;
+  --red:          #ff5555;
+  --yellow:       #f1fa8c;
+
+  /* VS Code structural colors */
+  --titlebar-bg:       #21222c;
+  --titlebar-fg:       #9a9ba6;
+  --activity-bar-bg:   #343746;
+  --sidebar-bg:        #21222c;
+  --sidebar-fg:        #cccccc;
+  --sidebar-header-fg: #bbbbbb;
+  --editor-bg:         #282a36;
+  --tab-active-bg:     #282a36;
+  --tab-inactive-bg:   #21222c;
+  --tab-inactive-fg:   #6272a4;
+  --tab-border:        #191a21;
+  --statusbar-bg:      #6272a4;
+  --statusbar-fg:      #f8f8f2;
+  --statusbar-hover:   #7283b5;
+  --border:            #191a21;
+  --gutter-fg:         #6272a4;
+  --gutter-active-fg:  #f8f8f2;
+  --line-highlight:    rgba(68, 71, 90, 0.3);
+  --scrollbar-thumb:   rgba(121, 121, 121, 0.4);
+  --scrollbar-hover:   rgba(121, 121, 121, 0.7);
+
+  /* Chat panel */
+  --chat-bg:           #21222c;
+  --chat-user-bg:      #44475a;
+  --chat-ai-bg:        #343746;
+  --chat-border:       #343746;
+
+  /* Typography */
+  --font-mono: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+  --font-ui:   -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-code: 14px;
+  --font-size-ui:   13px;
+  --font-size-small: 11px;
+  --line-height:    1.6;
+
+  /* Panel sizes */
+  --titlebar-height:     30px;
+  --activity-bar-width:  48px;
+  --sidebar-width:       260px;
+  --tab-height:          35px;
+  --breadcrumb-height:   22px;
+  --statusbar-height:    22px;
+  --chat-panel-width:    320px;
+  --minimap-width:       50px;
+  --gutter-width:        60px;
+}

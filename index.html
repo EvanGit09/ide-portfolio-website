@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corey Birnie — Portfolio</title>
+  <meta name="description" content="Advanced Software Engineer — London, UK. TypeScript, React, AI/ML.">
+  <meta name="theme-color" content="#282a36">
+  <meta property="og:title" content="Corey Birnie — Portfolio">
+  <meta property="og:description" content="Advanced Software Engineer — London, UK">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23282a36'/><text x='16' y='22' font-size='16' fill='%2350fa7b' text-anchor='middle' font-family='monospace'>CB</text></svg>">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ============================================================ -->
+  <!-- VS Code Shell                                                -->
+  <!-- ============================================================ -->
+  <div class="vscode-shell">
+
+    <!-- ── TITLE BAR ─────────────────────────────────────────── -->
+    <header class="titlebar">
+      <div class="titlebar__traffic-lights">
+        <span class="dot dot--close"></span>
+        <span class="dot dot--minimize"></span>
+        <span class="dot dot--maximize"></span>
+      </div>
+      <div class="titlebar__menu">
+        <span>File</span>
+        <span>Edit</span>
+        <span>Selection</span>
+        <span>View</span>
+        <span>Go</span>
+        <span>Run</span>
+        <span>Terminal</span>
+        <span>Help</span>
+      </div>
+      <div class="titlebar__title" id="titlebar-title">about.tsx — Corey Birnie — Portfolio</div>
+    </header>
+
+    <!-- ── ACTIVITY BAR ──────────────────────────────────────── -->
+    <nav class="activity-bar">
+      <div class="activity-bar__top">
+        <!-- Explorer (Files) -->
+        <button class="activity-bar__icon active" data-panel="explorer" title="Explorer (Ctrl+B)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3h7l2 2h9v15H3V3z"/>
+            <path d="M3 10h18"/>
+          </svg>
+        </button>
+
+        <!-- LinkedIn -->
+        <a class="activity-bar__icon" href="https://linkedin.com/in/coreybirnie" target="_blank" rel="noopener" title="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <path d="M8 11v5"/>
+            <path d="M8 8v.01"/>
+            <path d="M12 16v-5"/>
+            <path d="M16 16v-3a2 2 0 00-4 0"/>
+          </svg>
+        </a>
+
+        <!-- Email -->
+        <a class="activity-bar__icon" href="mailto:coreybirnie@gmail.com" title="Email">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M22 7l-10 7L2 7"/>
+          </svg>
+        </a>
+
+        <!-- GitHub -->
+        <a class="activity-bar__icon" href="https://github.com/EvanGit09" target="_blank" rel="noopener" title="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="activity-bar__bottom">
+        <!-- Settings -->
+        <button class="activity-bar__icon" title="Settings">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ── FILE EXPLORER SIDEBAR ─────────────────────────────── -->
+    <aside class="sidebar" id="explorer-sidebar">
+      <div class="sidebar__header">
+        <span>EXPLORER</span>
+      </div>
+      <div class="sidebar__section">
+        <div class="sidebar__folder-header">
+          <span class="chevron open">›</span>
+          <span>COREY-BIRNIE-PORTFOLIO</span>
+        </div>
+        <ul class="file-tree" id="file-tree">
+          <!-- Rendered by explorer.js -->
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ── EDITOR AREA ───────────────────────────────────────── -->
+    <main class="editor-area">
+      <!-- Tab bar -->
+      <div class="tab-bar" id="tab-bar">
+        <!-- Rendered by tabs.js -->
+      </div>
+
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <span id="breadcrumb-path">
+          <span>src</span><span class="breadcrumb__sep">›</span>
+          <span>pages</span><span class="breadcrumb__sep">›</span>
+        </span>
+        <span id="breadcrumb-file">about.tsx</span>
+      </div>
+
+      <!-- Editor body -->
+      <div class="editor">
+        <div class="editor__gutter" id="gutter">
+          <!-- Line numbers rendered by app.js -->
+        </div>
+        <div class="editor__content" id="editor-content">
+          <!-- Code content rendered by app.js -->
+        </div>
+        <div class="editor__minimap" id="minimap">
+          <!-- Minimap rendered by app.js -->
+        </div>
+      </div>
+    </main>
+
+    <!-- ── AGENT CHAT SIDEBAR ────────────────────────────────── -->
+    <aside class="chat-panel" id="chat-panel">
+      <div class="chat-panel__header">
+        <span class="chat-panel__header-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 1l1.5 3.2L13 5l-2.5 2.5L11 11 8 9.2 5 11l.5-3.5L3 5l3.5-.8z"/>
+          </svg>
+        </span>
+        <span class="chat-panel__header-title">Agent</span>
+        <span class="chat-panel__model-badge">Claude Sonnet 4</span>
+        <button class="chat-panel__close" title="Close panel">&times;</button>
+      </div>
+
+      <div class="chat-panel__messages">
+        <!-- Message 1 -->
+        <div class="chat-message chat-message--user">
+          <span class="chat-message__label">You</span>
+          <div class="chat-message__bubble">Tell me about Corey Birnie</div>
+        </div>
+        <div class="chat-message chat-message--ai">
+          <span class="chat-message__label">Claude</span>
+          <div class="chat-message__bubble">
+            Corey is an <strong>Advanced Software Engineer</strong> at Worldover in London. He holds a <strong>1st class MEng</strong> in Computer Science from Durham University.<br><br>
+            He specializes in full-stack TypeScript/React development and AI-first product architecture.<br><br>
+            Fun fact: he went from writing embedded C/C++ for missile systems at MBDA to building AI platforms that generate entire web apps!
+          </div>
+        </div>
+
+        <!-- Message 2 -->
+        <div class="chat-message chat-message--user">
+          <span class="chat-message__label">You</span>
+          <div class="chat-message__bubble">What are his key technical skills?</div>
+        </div>
+        <div class="chat-message chat-message--ai">
+          <span class="chat-message__label">Claude</span>
+          <div class="chat-message__bubble">
+            His core stack:
+            <div class="code-block"><span class="label">Languages:</span>    <span class="value">TypeScript, Python, SQL,
+              Java, C++, Haskell</span>
+<span class="label">Technologies:</span> <span class="value">React, Next.js, tRPC,
+              Tailwind, React Query</span>
+<span class="label">AWS:</span>          <span class="value">Neptune, Amplify, S3,
+              EC2, Lambda</span>
+<span class="label">AI/ML:</span>        <span class="value">PyTorch, Computer Vision,
+              NLP, GANs</span></div>
+          </div>
+        </div>
+
+        <!-- Message 3 -->
+        <div class="chat-message chat-message--user">
+          <span class="chat-message__label">You</span>
+          <div class="chat-message__bubble">What's his most impressive achievement?</div>
+        </div>
+        <div class="chat-message chat-message--ai">
+          <span class="chat-message__label">Claude</span>
+          <div class="chat-message__bubble">
+            At Worldover, he led the architectural transformation of an entire platform into an <strong>"AI-first" appfactory</strong>. He also directed the <code>QuickReview</code> feature launch which improved customer efficiency by <strong>over 100x</strong>.<br><br>
+            His Master's dissertation is equally impressive — he built an ML pipeline combining computer vision, NLP, and financial modeling to <strong>predict stock prices from CEO video interviews</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-panel__input">
+        <div class="chat-panel__input-wrapper">
+          <input type="text" placeholder="Ask about Corey..." disabled>
+          <button class="chat-panel__send" disabled>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2 21l21-9L2 3v7l15 2-15 2z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── STATUS BAR ────────────────────────────────────────── -->
+    <footer class="statusbar">
+      <div class="statusbar__left">
+        <span class="statusbar__item statusbar__remote">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+          </svg>
+        </span>
+        <span class="statusbar__item statusbar__branch">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="6" y1="3" x2="6" y2="15"/>
+            <circle cx="18" cy="6" r="3"/>
+            <circle cx="6" cy="18" r="3"/>
+            <path d="M18 9a9 9 0 01-9 9"/>
+          </svg>
+          main
+        </span>
+        <span class="statusbar__item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+          </svg>
+          0
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          0
+        </span>
+      </div>
+      <div class="statusbar__right">
+        <span class="statusbar__item" id="status-line">Ln 1, Col 1</span>
+        <span class="statusbar__item">Spaces: 2</span>
+        <span class="statusbar__item">UTF-8</span>
+        <span class="statusbar__item" id="status-lang">TypeScript React</span>
+        <span class="statusbar__item">Prettier ✓</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ── MOBILE FALLBACK ───────────────────────────────────── -->
+  <div class="mobile-fallback">
+    <div class="mobile-fallback__icon">&lt;/&gt;</div>
+    <div class="mobile-fallback__title">Corey Birnie</div>
+    <div class="mobile-fallback__text">
+      This portfolio is best experienced on desktop — it replicates a full VS Code environment. Please visit on a larger screen for the full experience.
+    </div>
+    <div class="mobile-fallback__links">
+      <a href="https://linkedin.com/in/coreybirnie" target="_blank" rel="noopener" title="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 00-4 0"/></svg>
+      </a>
+      <a href="mailto:coreybirnie@gmail.com" title="Email">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+      </a>
+      <a href="https://github.com/EvanGit09" target="_blank" rel="noopener" title="GitHub">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

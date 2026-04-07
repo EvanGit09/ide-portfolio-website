@@ -1,0 +1,59 @@
+/* Title Bar */
+.titlebar {
+  grid-area: titlebar;
+  display: flex;
+  align-items: center;
+  background: var(--titlebar-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 8px;
+  height: var(--titlebar-height);
+  user-select: none;
+  -webkit-app-region: drag;
+}
+
+.titlebar__traffic-lights {
+  display: flex;
+  gap: 8px;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.titlebar__traffic-lights .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot--close { background: var(--red); }
+.dot--minimize { background: var(--yellow); }
+.dot--maximize { background: var(--green); }
+
+.titlebar__menu {
+  display: flex;
+  gap: 0;
+  margin-left: 16px;
+  flex-shrink: 0;
+}
+
+.titlebar__menu span {
+  padding: 2px 8px;
+  font-size: var(--font-size-ui);
+  color: var(--titlebar-fg);
+  cursor: default;
+  border-radius: 4px;
+}
+
+.titlebar__menu span:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.titlebar__title {
+  flex: 1;
+  text-align: center;
+  font-size: var(--font-size-small);
+  color: var(--titlebar-fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

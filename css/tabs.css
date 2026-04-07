@@ -1,0 +1,107 @@
+/* Editor Tab Bar */
+.tab-bar {
+  display: flex;
+  background: var(--tab-inactive-bg);
+  height: var(--tab-height);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  overflow-y: hidden;
+  flex-shrink: 0;
+}
+
+.tab-bar::-webkit-scrollbar {
+  height: 3px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: var(--tab-height);
+  min-width: 80px;
+  max-width: 160px;
+  background: var(--tab-inactive-bg);
+  color: var(--tab-inactive-fg);
+  border-right: 1px solid var(--tab-border);
+  cursor: pointer;
+  font-size: var(--font-size-ui);
+  user-select: none;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.tab:hover {
+  background: var(--bg-lighter);
+}
+
+.tab.active {
+  background: var(--tab-active-bg);
+  color: var(--fg);
+  border-bottom: 1px solid var(--tab-active-bg);
+  /* Merge with editor by covering the tab-bar bottom border */
+  margin-bottom: -1px;
+}
+
+.tab__icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.tab__icon--ts,
+.tab__icon--tsx {
+  color: #3178c6;
+}
+
+.tab__icon--json {
+  color: var(--yellow);
+}
+
+.tab__icon--md {
+  color: #519aba;
+}
+
+.tab__icon--config {
+  color: var(--comment);
+}
+
+.tab__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.tab__close {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--tab-inactive-fg);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.tab:hover .tab__close,
+.tab.active .tab__close {
+  opacity: 1;
+}
+
+.tab__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--fg);
+}

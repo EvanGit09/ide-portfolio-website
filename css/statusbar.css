@@ -1,0 +1,53 @@
+/* Status Bar */
+.statusbar {
+  grid-area: statusbar;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--statusbar-bg);
+  color: var(--statusbar-fg);
+  font-size: var(--font-size-small);
+  padding: 0 8px;
+  height: var(--statusbar-height);
+  user-select: none;
+}
+
+.statusbar__left,
+.statusbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.statusbar__item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  height: var(--statusbar-height);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.statusbar__item:hover {
+  background: var(--statusbar-hover);
+}
+
+.statusbar__item svg {
+  width: 14px;
+  height: 14px;
+}
+
+.statusbar__branch svg {
+  width: 12px;
+  height: 12px;
+}
+
+.statusbar__remote {
+  background: var(--purple);
+  padding: 0 8px;
+}
+
+.statusbar__remote:hover {
+  background: rgba(189, 147, 249, 0.8);
+}

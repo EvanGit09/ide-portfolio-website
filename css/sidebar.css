@@ -1,0 +1,183 @@
+/* File Explorer Sidebar */
+.sidebar {
+  grid-area: sidebar;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+  height: 35px;
+  flex-shrink: 0;
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--sidebar-header-fg);
+}
+
+.sidebar__section {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar__folder-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--sidebar-fg);
+  cursor: pointer;
+  user-select: none;
+}
+
+.sidebar__folder-header:hover {
+  background: var(--current-line);
+}
+
+.sidebar__folder-header .chevron {
+  font-size: 10px;
+  transition: transform 0.15s ease;
+  display: inline-block;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar__folder-header .chevron.open {
+  transform: rotate(90deg);
+}
+
+/* File Tree */
+.file-tree {
+  list-style: none;
+  font-size: var(--font-size-ui);
+}
+
+.file-tree ul {
+  list-style: none;
+}
+
+.file-tree__item {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  cursor: pointer;
+  color: var(--sidebar-fg);
+  white-space: nowrap;
+  position: relative;
+}
+
+.file-tree__item:hover {
+  background: rgba(68, 71, 90, 0.5);
+}
+
+.file-tree__item.active {
+  background: var(--current-line);
+}
+
+.file-tree__item--folder {
+  font-weight: normal;
+}
+
+.file-tree__chevron {
+  width: 16px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+  color: var(--sidebar-fg);
+}
+
+.file-tree__chevron.open {
+  transform: rotate(90deg);
+}
+
+.file-tree__chevron.hidden {
+  visibility: hidden;
+}
+
+.file-tree__icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  flex-shrink: 0;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* File type icons */
+.file-tree__icon--ts {
+  color: #3178c6;
+}
+
+.file-tree__icon--tsx {
+  color: #3178c6;
+}
+
+.file-tree__icon--json {
+  color: var(--yellow);
+}
+
+.file-tree__icon--md {
+  color: #519aba;
+}
+
+.file-tree__icon--folder {
+  color: #c09553;
+}
+
+.file-tree__icon--folder-open {
+  color: #c09553;
+}
+
+.file-tree__icon--config {
+  color: var(--comment);
+}
+
+.file-tree__icon--image {
+  color: var(--purple);
+}
+
+.file-tree__name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-tree__children {
+  display: none;
+}
+
+.file-tree__children.open {
+  display: block;
+}
+
+/* Indent guides */
+.file-tree__indent {
+  display: inline-flex;
+  height: 22px;
+}
+
+.file-tree__indent-guide {
+  width: 16px;
+  height: 22px;
+  border-left: 1px solid rgba(68, 71, 90, 0.6);
+  flex-shrink: 0;
+}

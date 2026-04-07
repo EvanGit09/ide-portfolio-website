@@ -1,0 +1,111 @@
+/* VS Code Portfolio — Style Entry Point */
+@import 'variables.css';
+@import 'layout.css';
+@import 'titlebar.css';
+@import 'activity-bar.css';
+@import 'sidebar.css';
+@import 'tabs.css';
+@import 'editor.css';
+@import 'chat.css';
+@import 'statusbar.css';
+@import 'scrollbar.css';
+
+/* Responsive */
+@media (max-width: 1024px) {
+  :root {
+    --chat-panel-width: 0px;
+    --sidebar-width: 200px;
+  }
+
+  .chat-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .editor__minimap {
+    display: none;
+  }
+
+  .tab-bar {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .vscode-shell {
+    display: none;
+  }
+
+  .mobile-fallback {
+    display: flex !important;
+  }
+}
+
+/* Mobile fallback */
+.mobile-fallback {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 32px;
+  text-align: center;
+  font-family: var(--font-ui);
+}
+
+.mobile-fallback__icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.mobile-fallback__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.mobile-fallback__text {
+  font-size: 14px;
+  color: var(--comment);
+  margin-bottom: 24px;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+.mobile-fallback__links {
+  display: flex;
+  gap: 16px;
+}
+
+.mobile-fallback__links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--current-line);
+  color: var(--fg);
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.mobile-fallback__links a:hover {
+  background: var(--comment);
+}
+
+.mobile-fallback__links a svg {
+  width: 22px;
+  height: 22px;
+}

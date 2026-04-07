@@ -1,0 +1,179 @@
+/* Editor Area */
+.editor-area {
+  grid-area: editor;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--editor-bg);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  height: var(--breadcrumb-height);
+  font-size: var(--font-size-small);
+  color: var(--comment);
+  background: var(--editor-bg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.breadcrumb__sep {
+  color: var(--comment);
+  font-size: 10px;
+}
+
+.breadcrumb span:not(.breadcrumb__sep):hover {
+  color: var(--fg);
+  cursor: pointer;
+}
+
+/* Editor Body */
+.editor {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.editor__gutter {
+  width: var(--gutter-width);
+  flex-shrink: 0;
+  padding: 0;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-code);
+  line-height: var(--line-height);
+  color: var(--gutter-fg);
+  user-select: none;
+  overflow: hidden;
+  padding-top: 4px;
+}
+
+.editor__gutter .line-number {
+  padding-right: 16px;
+  height: calc(var(--font-size-code) * var(--line-height));
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.editor__gutter .line-number.active {
+  color: var(--gutter-active-fg);
+}
+
+.editor__content {
+  flex: 1;
+  overflow: auto;
+  padding: 4px 16px 4px 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-code);
+  line-height: var(--line-height);
+  color: var(--fg);
+  tab-size: 2;
+  position: relative;
+}
+
+.editor__content .code-line {
+  white-space: pre;
+  min-height: calc(var(--font-size-code) * var(--line-height));
+  padding: 0 4px;
+  position: relative;
+}
+
+.editor__content .code-line:first-child {
+  position: relative;
+}
+
+/* Current line highlight on first line */
+.editor__content .code-line.current-line {
+  background: var(--line-highlight);
+}
+
+/* Blinking cursor */
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: calc(var(--font-size-code) * 1.2);
+  background: var(--fg);
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: -1px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Minimap */
+.editor__minimap {
+  width: var(--minimap-width);
+  flex-shrink: 0;
+  background: var(--editor-bg);
+  overflow: hidden;
+  padding: 4px 4px;
+  position: relative;
+  border-left: 1px solid rgba(68, 71, 90, 0.3);
+}
+
+.minimap__line {
+  height: 3px;
+  margin-bottom: 1px;
+  border-radius: 1px;
+  opacity: 0.6;
+}
+
+/* Syntax highlighting classes — Dracula */
+.kw  { color: var(--pink); }      /* keywords: import, export, const, interface, return */
+.fn  { color: var(--green); }     /* function/component names */
+.str { color: var(--yellow); }    /* string literals */
+.num { color: var(--purple); }    /* numbers, booleans */
+.type { color: var(--cyan); }     /* type annotations */
+.cm  { color: var(--comment); font-style: italic; }  /* comments */
+.op  { color: var(--fg); }        /* operators/punctuation */
+.prop { color: var(--fg); }       /* property names */
+.tag { color: var(--pink); }      /* JSX tags */
+.attr { color: var(--green); }    /* JSX attributes */
+.param { color: var(--orange); }  /* function parameters */
+.dec { color: var(--green); }     /* decorators, special identifiers */
+.regex { color: var(--red); }     /* regex literals */
+
+/* Bracket pair colorization */
+.bracket-1 { color: var(--purple); }
+.bracket-2 { color: var(--cyan); }
+.bracket-3 { color: var(--yellow); }
+
+/* Indent guides in editor */
+.indent-guide {
+  border-left: 1px solid rgba(68, 71, 90, 0.4);
+  display: inline-block;
+}
+
+/* Profile image in about page */
+.profile-image-container {
+  float: right;
+  margin: 0 20px 20px 30px;
+  position: relative;
+}
+
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid var(--current-line);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Content fade transition */
+.editor__content {
+  transition: opacity 0.1s ease;
+}
+
+.editor__content.fading {
+  opacity: 0;
+}

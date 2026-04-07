@@ -1,0 +1,88 @@
+/* Master Layout — CSS Grid */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: var(--font-size-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.vscode-shell {
+  display: grid;
+  grid-template-columns:
+    var(--activity-bar-width)
+    var(--sidebar-width)
+    1fr
+    var(--chat-panel-width);
+  grid-template-rows:
+    var(--titlebar-height)
+    1fr
+    var(--statusbar-height);
+  grid-template-areas:
+    "titlebar   titlebar   titlebar   titlebar"
+    "activity   sidebar    editor     chat"
+    "statusbar  statusbar  statusbar  statusbar";
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Sidebar collapse state */
+.vscode-shell.sidebar-collapsed {
+  grid-template-columns:
+    var(--activity-bar-width)
+    0px
+    1fr
+    var(--chat-panel-width);
+}
+
+.vscode-shell.sidebar-collapsed .sidebar {
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Chat panel collapse */
+.vscode-shell.chat-collapsed {
+  grid-template-columns:
+    var(--activity-bar-width)
+    var(--sidebar-width)
+    1fr
+    0px;
+}
+
+.vscode-shell.sidebar-collapsed.chat-collapsed {
+  grid-template-columns:
+    var(--activity-bar-width)
+    0px
+    1fr
+    0px;
+}
+
+.vscode-shell.chat-collapsed .chat-panel {
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Transitions for smooth panel toggle */
+.vscode-shell {
+  transition: grid-template-columns 0.15s ease;
+}
+
+.sidebar {
+  transition: opacity 0.15s ease;
+}
+
+.chat-panel {
+  transition: opacity 0.15s ease;
+}
