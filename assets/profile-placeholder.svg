@@ -1,6 +1,0 @@
-<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'>
-  <rect width='180' height='180' rx='8' fill='#44475a'/>
-  <circle cx='90' cy='70' r='35' fill='#6272a4'/>
-  <ellipse cx='90' cy='155' rx='55' ry='45' fill='#6272a4'/>
-  <text x='90' y='178' font-size='12' fill='#f8f8f2' text-anchor='middle' font-family='sans-serif'>Your photo here</text>
-</svg>

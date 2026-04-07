@@ -163,8 +163,9 @@
 .profile-image {
   width: 180px;
   height: 180px;
-  border-radius: 8px;
+  border-radius: 50%;
   object-fit: cover;
+  object-position: center;
   border: 2px solid var(--current-line);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
