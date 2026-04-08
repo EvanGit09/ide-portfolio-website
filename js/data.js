@@ -43,6 +43,7 @@ export const FILE_TREE = {
         { name: 'profile.jpg', type: 'file', fileType: 'image', page: null },
       ]
     },
+    { name: 'cv.pdf', type: 'file', fileType: 'pdf', page: 'cv' },
     { name: 'package.json', type: 'file', fileType: 'json', page: 'package-json' },
     { name: 'tsconfig.json', type: 'file', fileType: 'json', page: 'tsconfig-json' },
     { name: 'next.config.ts', type: 'file', fileType: 'ts', page: 'next-config' },
@@ -63,6 +64,7 @@ export const FILE_PATHS = {
   'profile-component': 'src / components / ProfileImage.tsx',
   'resume-json': 'src / data / resume.json',
   'skills-json': 'src / data / skills.json',
+  'cv': 'cv.pdf',
   'package-json': 'package.json',
   'tsconfig-json': 'tsconfig.json',
   'next-config': 'next.config.ts',
@@ -76,6 +78,7 @@ export const FILE_LANGUAGES = {
   'json': 'JSON',
   'md': 'Markdown',
   'image': 'Image',
+  'pdf': 'PDF Document',
 };
 
 // ============================================================

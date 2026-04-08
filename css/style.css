@@ -10,7 +10,60 @@
 @import 'statusbar.css';
 @import 'scrollbar.css';
 
-/* Responsive */
+/* Mobile navigation — hidden on desktop */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(48px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: var(--titlebar-bg);
+  border-top: 1px solid var(--border);
+  align-items: center;
+  justify-content: space-around;
+  z-index: 200;
+}
+
+.mobile-nav__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: none;
+  color: var(--comment);
+  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.mobile-nav__btn:hover,
+.mobile-nav__btn.active {
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav__btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Mobile backdrop overlay */
+.mobile-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+/* ===== Responsive ===== */
+
+/* Tablet: hide chat, shrink sidebar */
 @media (max-width: 1024px) {
   :root {
     --chat-panel-width: 0px;
@@ -22,35 +75,168 @@
   }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
-  :root {
-    --sidebar-width: 0px;
+  /* Single-column grid — editor fills the screen */
+  .vscode-shell,
+  .vscode-shell.sidebar-collapsed,
+  .vscode-shell.chat-collapsed,
+  .vscode-shell.sidebar-collapsed.chat-collapsed {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--titlebar-height) 1fr;
+    grid-template-areas:
+      "titlebar"
+      "editor";
+    height: calc(100vh - 48px - env(safe-area-inset-bottom, 0px));
   }
 
-  .sidebar {
-    display: none;
+  /* Hide non-essential desktop chrome */
+  .activity-bar { display: none; }
+  .statusbar { display: none; }
+  .editor__minimap { display: none; }
+  .titlebar__menu { display: none; }
+  .titlebar__traffic-lights { display: none; }
+
+  /* Sidebar as slide-in overlay from left */
+  .sidebar,
+  .vscode-shell.sidebar-collapsed .sidebar {
+    display: flex;
+    position: fixed;
+    top: var(--titlebar-height);
+    left: 0;
+    bottom: calc(48px + env(safe-area-inset-bottom, 0px));
+    width: 280px;
+    max-width: 85vw;
+    z-index: 100;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    background: var(--sidebar-bg);
   }
 
-  .editor__minimap {
-    display: none;
+  body.mobile-sidebar-open .sidebar {
+    transform: translateX(0);
   }
 
-  .tab-bar {
-    overflow-x: auto;
+  /* Chat panel as slide-in overlay from right */
+  .chat-panel,
+  .vscode-shell.chat-collapsed .chat-panel {
+    display: flex;
+    position: fixed;
+    top: var(--titlebar-height);
+    right: 0;
+    bottom: calc(48px + env(safe-area-inset-bottom, 0px));
+    width: 320px;
+    max-width: 90vw;
+    z-index: 100;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    background: var(--chat-bg);
   }
-}
 
-@media (max-width: 480px) {
-  .vscode-shell {
-    display: none;
+  body.mobile-chat-open .chat-panel {
+    transform: translateX(0);
   }
 
-  .mobile-fallback {
+  /* Show mobile nav */
+  .mobile-nav {
     display: flex !important;
   }
+
+  /* Show backdrop when overlay is open */
+  body.mobile-sidebar-open .mobile-backdrop,
+  body.mobile-chat-open .mobile-backdrop {
+    display: block;
+  }
+
+  /* Highlight active nav button */
+  body.mobile-sidebar-open .mobile-nav__btn[data-mobile="explorer"] {
+    color: var(--fg);
+  }
+
+  body.mobile-chat-open .mobile-nav__btn[data-mobile="chat"] {
+    color: var(--fg);
+  }
+
+  /* Tab bar horizontal scroll */
+  .tab-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Reduce gutter width */
+  .editor__gutter {
+    width: 40px;
+  }
+
+  /* Editor content padding */
+  .editor__content {
+    padding: 4px 12px 4px 0;
+  }
+
+  /* Profile image: center instead of float */
+  .profile-image-container {
+    float: none;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 16px 0;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Breadcrumb padding */
+  .breadcrumb {
+    padding: 0 8px;
+  }
+
+  /* Keep legacy mobile fallback hidden */
+  .mobile-fallback {
+    display: none !important;
+  }
 }
 
-/* Mobile fallback */
+/* Extra small screens (phones in portrait) */
+@media (max-width: 480px) {
+  .editor__gutter {
+    width: 32px;
+  }
+
+  .editor__gutter .line-number {
+    padding-right: 8px;
+    font-size: 11px;
+  }
+
+  .editor__content {
+    font-size: 12px;
+    padding: 4px 8px 4px 0;
+  }
+
+  .tab {
+    min-width: 60px;
+    padding: 0 8px;
+  }
+
+  .tab__close {
+    display: none;
+  }
+
+  .titlebar__title {
+    font-size: 10px;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Mobile fallback (legacy — hidden by default) */
 .mobile-fallback {
   display: none;
   flex-direction: column;
