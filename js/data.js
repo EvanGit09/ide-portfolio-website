@@ -97,7 +97,7 @@ export const CHAT_MESSAGES = [
   {
     role: 'ai',
     text: 'His core stack:',
-    codeBlock: `Languages:    TypeScript, Python, SQL,\n              Java, C++, Haskell\nTechnologies: React, Next.js, tRPC,\n              Tailwind, React Query\nAWS:          Neptune, Amplify, S3,\n              EC2, Lambda\nAI/ML:        PyTorch, Computer Vision,\n              NLP, GANs`,
+    codeBlock: `Languages:    TypeScript, Python, SQL, Java, C++, Haskell\nTechnologies: React, Next.js, tRPC, Tailwind, React Query\nAWS:          Neptune, Amplify, S3, EC2, Lambda\nAI/ML:        PyTorch, Computer Vision, NLP, GANs`,
   },
   {
     role: 'user',
