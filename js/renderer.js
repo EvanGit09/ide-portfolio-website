@@ -889,7 +889,7 @@ export function renderResumeJson() {
       ","
     )}`,
     `${ind(1)}${str('"summary"')}${op(":")} ${str(
-      '"Advanced Software Engineer specializing in"'
+      '"Advanced Software Engineer specialising in"'
     )}${op(",")}`,
     `${ind(1)}${cm(
       "// full-stack TypeScript/React development, AI-first product"
