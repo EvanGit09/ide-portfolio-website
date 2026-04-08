@@ -2,6 +2,8 @@
 // explorer.js — File tree rendering + expand/collapse
 // ============================================================
 
+import { CONFIG } from './config.js';
+
 let onFileClick = null;
 let activeFileId = null;
 
@@ -80,6 +82,11 @@ function renderIndent(depth) {
 }
 
 function renderNode(node, depth = 0) {
+  // Skip nodes gated by a config flag
+  if (node.visibleWhen && !CONFIG[node.visibleWhen]) {
+    return '';
+  }
+
   if (node.type === 'root') {
     return node.children.map(child => renderNode(child, depth)).join('');
   }

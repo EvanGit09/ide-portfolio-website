@@ -43,7 +43,7 @@ export const FILE_TREE = {
         { name: 'profile.jpg', type: 'file', fileType: 'image', page: null },
       ]
     },
-    { name: 'cv.pdf', type: 'file', fileType: 'pdf', page: 'cv' },
+    { name: 'cv.pdf', type: 'file', fileType: 'pdf', page: 'cv', visibleWhen: 'SHOW_CV' },
     { name: 'package.json', type: 'file', fileType: 'json', page: 'package-json' },
     { name: 'tsconfig.json', type: 'file', fileType: 'json', page: 'tsconfig-json' },
     { name: 'next.config.ts', type: 'file', fileType: 'ts', page: 'next-config' },
