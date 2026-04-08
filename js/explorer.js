@@ -2,6 +2,8 @@
 // explorer.js — File tree rendering + expand/collapse
 // ============================================================
 
+import { CONFIG } from './config.js';
+
 let onFileClick = null;
 let activeFileId = null;
 
@@ -45,6 +47,14 @@ function getFileIcon(fileType) {
           <text x="8" y="11" font-size="7" font-weight="bold" fill="#519aba" text-anchor="middle" font-family="sans-serif">M↓</text>
         </svg>
       </span>`;
+    case 'pdf':
+      return `<span class="file-tree__icon file-tree__icon--pdf">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 1h6l4 4v10H4V1z" fill="#e8384f"/>
+          <path d="M10 1l4 4h-4V1z" fill="#b22d3b"/>
+          <text x="9" y="12.5" font-size="5" font-weight="700" fill="white" text-anchor="middle" font-family="sans-serif">PDF</text>
+        </svg>
+      </span>`;
     case 'image':
       return `<span class="file-tree__icon file-tree__icon--image">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -72,6 +82,11 @@ function renderIndent(depth) {
 }
 
 function renderNode(node, depth = 0) {
+  // Skip nodes gated by a config flag
+  if (node.visibleWhen && !CONFIG[node.visibleWhen]) {
+    return '';
+  }
+
   if (node.type === 'root') {
     return node.children.map(child => renderNode(child, depth)).join('');
   }

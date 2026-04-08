@@ -251,7 +251,33 @@
     </footer>
   </div>
 
-  <!-- ── MOBILE FALLBACK ───────────────────────────────────── -->
+  <!-- ── MOBILE BOTTOM NAV ──────────────────────────────────── -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav__btn" data-mobile="explorer" title="Explorer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 3h7l2 2h9v15H3V3z"/><path d="M3 10h18"/>
+      </svg>
+    </button>
+    <button class="mobile-nav__btn" data-mobile="chat" title="Chat">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+      </svg>
+    </button>
+    <a class="mobile-nav__btn" href="https://linkedin.com/in/coreybirnie" target="_blank" rel="noopener" title="LinkedIn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 00-4 0"/></svg>
+    </a>
+    <a class="mobile-nav__btn" href="https://github.com/EvanGit09" target="_blank" rel="noopener" title="GitHub">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+    </a>
+    <a class="mobile-nav__btn" href="mailto:coreybirnie@gmail.com" title="Email">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+    </a>
+  </nav>
+
+  <!-- ── MOBILE BACKDROP ──────────────────────────────────────── -->
+  <div class="mobile-backdrop" id="mobile-backdrop"></div>
+
+  <!-- ── MOBILE FALLBACK (legacy) ─────────────────────────────── -->
   <div class="mobile-fallback">
     <div class="mobile-fallback__icon">&lt;/&gt;</div>
     <div class="mobile-fallback__title">Corey Birnie</div>

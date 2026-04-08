@@ -14,17 +14,43 @@ function renderEditor(pageId, filename, fileType) {
   const content = document.getElementById("editor-content");
   const gutter = document.getElementById("gutter");
   const minimap = document.getElementById("minimap");
+  const editor = content?.closest(".editor");
 
   if (!content || !gutter) return;
 
-  // Get rendered lines
-  const lines = renderPage(pageId);
+  // Toggle PDF mode class
+  editor?.classList.toggle("editor--pdf", pageId === "cv");
 
   // Fade transition
   content.classList.add("fading");
 
   setTimeout(() => {
-    // Render content lines
+    // PDF viewer — special case
+    if (pageId === "cv") {
+      content.innerHTML = `
+        <div class="pdf-viewer">
+          <a class="pdf-download-btn" href="assets/Corey_Birnie_CV.pdf" download="Corey_Birnie_CV.pdf" title="Download CV">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download CV
+          </a>
+          <iframe src="assets/Corey_Birnie_CV.pdf" class="pdf-frame" title="Corey Birnie CV"></iframe>
+        </div>`;
+      gutter.innerHTML = "";
+      if (minimap) minimap.innerHTML = "";
+
+      const breadcrumbPath = FILE_PATHS[pageId] || filename;
+      updateStatusBar(filename, fileType, 1, breadcrumbPath);
+      setActiveFile(pageId);
+      content.classList.remove("fading");
+      return;
+    }
+
+    // Standard code rendering
+    const lines = renderPage(pageId);
     const isAboutPage = pageId === "about";
     let contentHTML = "";
 
@@ -93,6 +119,8 @@ function handleTabChange(pageId, filename, fileType) {
 
 function handleFileClick(pageId, filename, fileType) {
   openTab(pageId, filename, fileType);
+  // Close mobile sidebar overlay after file selection
+  document.body.classList.remove("mobile-sidebar-open");
 }
 
 // ── Sidebar toggle ────────────────────────────────────────────
@@ -107,8 +135,12 @@ function toggleSidebar() {
 // ── Chat panel toggle ─────────────────────────────────────────
 
 function toggleChat() {
-  const shell = document.querySelector(".vscode-shell");
-  shell.classList.toggle("chat-collapsed");
+  if (window.innerWidth <= 768) {
+    document.body.classList.remove("mobile-chat-open");
+  } else {
+    const shell = document.querySelector(".vscode-shell");
+    shell.classList.toggle("chat-collapsed");
+  }
 }
 
 // ── Keyboard shortcuts ────────────────────────────────────────
@@ -141,6 +173,35 @@ function initChatPanel() {
   const closeBtn = document.querySelector(".chat-panel__close");
   if (closeBtn) {
     closeBtn.addEventListener("click", toggleChat);
+  }
+}
+
+// ── Mobile navigation ─────────────────────────────────────────
+
+function initMobileNav() {
+  const explorerBtn = document.querySelector('[data-mobile="explorer"]');
+  const chatBtn = document.querySelector('[data-mobile="chat"]');
+  const backdrop = document.getElementById("mobile-backdrop");
+
+  if (explorerBtn) {
+    explorerBtn.addEventListener("click", () => {
+      document.body.classList.remove("mobile-chat-open");
+      document.body.classList.toggle("mobile-sidebar-open");
+    });
+  }
+
+  if (chatBtn) {
+    chatBtn.addEventListener("click", () => {
+      document.body.classList.remove("mobile-sidebar-open");
+      document.body.classList.toggle("mobile-chat-open");
+    });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener("click", () => {
+      document.body.classList.remove("mobile-sidebar-open");
+      document.body.classList.remove("mobile-chat-open");
+    });
   }
 }
 
@@ -184,6 +245,9 @@ function init() {
 
   // Init chat panel
   initChatPanel();
+
+  // Init mobile navigation
+  initMobileNav();
 
   // Init keyboard shortcuts
   initKeyboard();
