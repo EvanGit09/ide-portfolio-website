@@ -3,5 +3,5 @@
 // ============================================================
 
 export const CONFIG = {
-  SHOW_CV: false,
+  SHOW_CV: true,
 };
