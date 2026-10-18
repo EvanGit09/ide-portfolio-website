@@ -7,7 +7,17 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "types": ["vite/client", "node"]
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "isolatedModules": true
   },
-  "include": ["src", "server", "api", "tests", "*.config.ts"]
+  "include": [
+    "src",
+    "server",
+    "api",
+    "tests",
+    "*.config.ts"
+  ]
 }
