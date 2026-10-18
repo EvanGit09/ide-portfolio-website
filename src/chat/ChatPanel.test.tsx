@@ -76,6 +76,14 @@ describe("ChatPanel", () => {
     expect(within(alert).getByRole("button", { name: /retry/i })).toBeInTheDocument();
   });
 
+  it("hides the hover action bar on a failed reply so Retry is offered once", async () => {
+    render(<ChatPanel transport={createMockTransport({ error: new Error("boom") })} />);
+    await ask("Hello");
+    await screen.findByRole("alert");
+    expect(screen.queryByRole("button", { name: "Retry response" })).not.toBeInTheDocument();
+    expect(screen.getAllByRole("button", { name: /retry/i })).toHaveLength(1);
+  });
+
   it("shows a generic friendly error for plain errors", async () => {
     render(<ChatPanel transport={createMockTransport({ error: new TypeError("Failed to fetch") })} />);
     await ask("Hello");

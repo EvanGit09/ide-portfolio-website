@@ -1,4 +1,4 @@
-import { ActionBarPrimitive, ErrorPrimitive, MessagePrimitive } from "@assistant-ui/react";
+import { ActionBarPrimitive, AuiIf, ErrorPrimitive, MessagePrimitive } from "@assistant-ui/react";
 import { useAISDKError } from "@assistant-ui/ai-sdk";
 import { APICallError } from "ai";
 import { getChatErrorMessage } from "./error-messages";
@@ -59,7 +59,9 @@ export function AssistantMessage() {
           <ChatError />
         </MessagePrimitive.Error>
       </div>
-      <MessageActions />
+      <AuiIf condition={(s) => !(s.message.status?.type === "incomplete" && s.message.status.reason === "error")}>
+        <MessageActions />
+      </AuiIf>
     </MessagePrimitive.Root>
   );
 }
