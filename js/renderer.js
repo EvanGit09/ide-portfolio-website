@@ -97,32 +97,32 @@ export function renderAbout() {
       "="
     )} ${b1("{")}`,
     `${ind(2)}${prop("Languages")}${op(":")} ${b2("[")}`,
-    `${ind(3)}${str('"TypeScript/JavaScript"')}${op(",")} ${str(
-      '"Python"'
-    )}${op(",")} ${str('"Gremlin"')}${op(",")}`,
-    `${ind(3)}${str('"SQL"')}${op(",")} ${str('"Java"')}${op(",")} ${str(
-      '"C++"'
-    )}${op(",")} ${str('"Motoko"')}${op(",")} ${str('"Haskell"')}`,
+    `${ind(3)}${str('"TypeScript"')}${op(",")} ${str('"Python"')}${op(
+      ","
+    )} ${str('"SQL"')}${op(",")} ${str('"Java"')}${op(",")}`,
+    `${ind(3)}${str('"C++"')}${op(",")} ${str('"Motoko"')}${op(",")} ${str(
+      '"Haskell"'
+    )}`,
     `${ind(2)}${b2("]")}${op(",")}`,
     `${ind(2)}${prop("Technologies")}${op(":")} ${b2("[")}`,
     `${ind(3)}${str('"React"')}${op(",")} ${str('"Next.js"')}${op(",")} ${str(
       '"tRPC"'
-    )}${op(",")} ${str('"Zod"')}${op(",")}`,
-    `${ind(3)}${str('"Tailwind CSS"')}${op(",")} ${str('"React Query"')}${op(
+    )}${op(",")} ${str('"Zod"')}${op(",")} ${str('"Postgres"')}${op(",")}`,
+    `${ind(3)}${str('"Tailwind"')}${op(",")} ${str('"Framer Motion"')}${op(
       ","
-    )} ${str('"Git"')}${op(",")}`,
-    `${ind(3)}${str('"Linux"')}${op(",")} ${str('"Machine Learning"')}${op(
-      ","
-    )} ${str('"PyTorch"')}${op(",")}`,
-    `${ind(3)}${str('"ThreeJS"')}${op(",")} ${str('"MCP"')}`,
+    )} ${str('"CSS"')}${op(",")} ${str('"React Query"')}${op(",")}`,
+    `${ind(3)}${str('"Git"')}${op(",")} ${str('"Linux"')}${op(",")} ${str(
+      '"PyTorch"'
+    )}${op(",")} ${str('"ThreeJS"')}${op(",")} ${str('"MCP"')}`,
     `${ind(2)}${b2("]")}${op(",")}`,
-    `${ind(2)}${prop("AWS")}${op(":")} ${b2("[")}`,
-    `${ind(3)}${str('"Neptune"')}${op(",")} ${str('"Amplify"')}${op(",")} ${str(
-      '"S3"'
-    )}${op(",")}`,
-    `${ind(3)}${str('"EC2"')}${op(",")} ${str('"OpenSearch"')}${op(",")} ${str(
-      '"Lambda"'
+    `${ind(2)}${prop("Infrastructure")}${op(":")} ${b2("[")}`,
+    `${ind(3)}${str('"AWS (EC2, Lambda, S3, IAM, Amplify, Load Balancer)"')}${op(
+      ","
     )}`,
+    `${ind(3)}${str('"Supabase"')}${op(",")} ${str('"Vercel"')}${op(",")} ${str(
+      '"Firecracker VMs"'
+    )}${op(",")}`,
+    `${ind(3)}${str('"Authentication Integration"')}`,
     `${ind(2)}${b2("]")}${op(",")}`,
     `${ind(1)}${b1("}")}${op(";")}`,
     ``,
@@ -230,6 +230,18 @@ export function renderExperience() {
     `${ind(3)}${str(
       '"greenfield AI feature — 100x customer efficiency improvement"'
     )}${op(",")}`,
+    `${ind(3)}${str(
+      '"Built a document agent letting customers create specialised,"'
+    )}${op(",")}`,
+    `${ind(3)}${str(
+      '"reusable document generators — turning one-off work self-serve"'
+    )}${op(",")}`,
+    `${ind(3)}${str(
+      '"Built a request agent that uses agent mail to chase suppliers"'
+    )}${op(",")}`,
+    `${ind(3)}${str(
+      '"for documents over email and extract structured data from them"'
+    )}${op(",")}`,
     `${ind(2)}${b3("]")}${op(",")}`,
     `${ind(1)}${b2("}")}${op(",")}`,
     ``,
@@ -243,14 +255,11 @@ export function renderExperience() {
     )}${op(",")}`,
     `${ind(2)}${prop("highlights")}${op(":")} ${b3("[")}`,
     `${ind(3)}${str(
-      '"Built an AI-powered formulation system integrating an ensemble"'
+      '"Implemented an MCP server on the platform API during personal"'
     )}${op(",")}`,
     `${ind(3)}${str(
-      '"of AI models, enabling users to generate cosmetic formulations"'
+      '"time — foundation for AI agent-based features across the platform"'
     )}${op(",")}`,
-    `${ind(3)}${str('"from simple prompts"')}${op(",")}`,
-    // `${ind(3)}${str('"Implemented an MCP server on the platform API during personal"')}${op(',')}`,
-    // `${ind(3)}${str('"time — foundation for AI agent-based features across the platform"')}${op(',')}`,
     `${ind(3)}${str(
       '"Mentored new engineers, managing their task progression"'
     )}${op(",")}`,
@@ -401,30 +410,33 @@ export function renderProjects() {
       '"Ticketing System on the IC Blockchain"'
     )}${op(",")}`,
     `${ind(2)}${prop("subtitle")}${op(":")} ${str(
-      '"Start-up Venture — Decentralised Ticketing"'
+      '"Co-founded Web3 Start-up — DFINITY Grant Funded"'
     )}${op(",")}`,
     `${ind(2)}${prop("description")}${op(":")} ${b3("[")}`,
     `${ind(3)}${str(
-      '"Pivotal role in a start-up developing blockchain-based"'
-    )}${op(",")}`,
-    `${ind(3)}${str('"ticketing with React frontend and Motoko backend"')}${op(
-      ","
-    )}`,
-    `${ind(3)}${str(
-      '"Built form manager to automate event onboarding process"'
+      '"Co-founded a Web3 startup with two engineering students,"'
     )}${op(",")}`,
     `${ind(3)}${str(
-      '"Implemented dynamic NFT minting for secure QR code tickets,"'
+      '"securing grant funding from the DFINITY Foundation to architect"'
     )}${op(",")}`,
-    `${ind(3)}${str('"enhancing fraud prevention and user experience"')}${op(
-      ","
-    )}`,
+    `${ind(3)}${str(
+      '"a decentralised event ticketing platform on the IC blockchain"'
+    )}${op(",")}`,
+    `${ind(3)}${str(
+      '"Developed and published open-source Motoko/Rust algorithms,"'
+    )}${op(",")}`,
+    `${ind(3)}${str(
+      '"including dynamic on-chain NFT QR code generation to eliminate"'
+    )}${op(",")}`,
+    `${ind(3)}${str('"secondary market ticket fraud"')}${op(",")}`,
     `${ind(2)}${b3("]")}${op(",")}`,
     `${ind(2)}${prop("tech")}${op(":")} ${b3("[")}${str('"React"')}${op(
       ","
-    )} ${str('"Motoko"')}${op(",")} ${str('"Internet Computer"')}${op(
+    )} ${str('"Motoko"')}${op(",")} ${str('"Rust"')}${op(",")} ${str(
+      '"Internet Computer"'
+    )}${op(",")} ${str('"NFTs"')}${op(",")} ${str('"Web3"')}${b3("]")}${op(
       ","
-    )} ${str('"NFTs"')}${op(",")} ${str('"Web3"')}${b3("]")}${op(",")}`,
+    )}`,
     `${ind(1)}${b2("}")}${op(",")}`,
     ``,
     `${ind(1)}${cm(
@@ -905,32 +917,32 @@ export function renderSkillsJson() {
   return [
     `${b1("{")}`,
     `${ind(1)}${str('"languages"')}${op(":")} ${b2("[")}`,
-    `${ind(2)}${str('"TypeScript/JavaScript"')}${op(",")} ${str(
-      '"Python"'
-    )}${op(",")} ${str('"Gremlin"')}${op(",")}`,
-    `${ind(2)}${str('"SQL"')}${op(",")} ${str('"Java"')}${op(",")} ${str(
-      '"C++"'
-    )}${op(",")} ${str('"Motoko"')}${op(",")} ${str('"Haskell"')}`,
+    `${ind(2)}${str('"TypeScript"')}${op(",")} ${str('"Python"')}${op(
+      ","
+    )} ${str('"SQL"')}${op(",")} ${str('"Java"')}${op(",")}`,
+    `${ind(2)}${str('"C++"')}${op(",")} ${str('"Motoko"')}${op(",")} ${str(
+      '"Haskell"'
+    )}`,
     `${ind(1)}${b2("]")}${op(",")}`,
     `${ind(1)}${str('"technologies"')}${op(":")} ${b2("[")}`,
     `${ind(2)}${str('"React"')}${op(",")} ${str('"Next.js"')}${op(",")} ${str(
       '"tRPC"'
-    )}${op(",")} ${str('"Zod"')}${op(",")}`,
-    `${ind(2)}${str('"Tailwind CSS"')}${op(",")} ${str('"React Query"')}${op(
+    )}${op(",")} ${str('"Zod"')}${op(",")} ${str('"Postgres"')}${op(",")}`,
+    `${ind(2)}${str('"Tailwind"')}${op(",")} ${str('"Framer Motion"')}${op(
       ","
-    )} ${str('"Git"')}${op(",")}`,
-    `${ind(2)}${str('"Linux"')}${op(",")} ${str('"Machine Learning"')}${op(
-      ","
-    )} ${str('"PyTorch"')}${op(",")}`,
-    `${ind(2)}${str('"ThreeJS"')}${op(",")} ${str('"MCP"')}`,
+    )} ${str('"CSS"')}${op(",")} ${str('"React Query"')}${op(",")}`,
+    `${ind(2)}${str('"Git"')}${op(",")} ${str('"Linux"')}${op(",")} ${str(
+      '"PyTorch"'
+    )}${op(",")} ${str('"ThreeJS"')}${op(",")} ${str('"MCP"')}`,
     `${ind(1)}${b2("]")}${op(",")}`,
-    `${ind(1)}${str('"aws"')}${op(":")} ${b2("[")}`,
-    `${ind(2)}${str('"Neptune"')}${op(",")} ${str('"Amplify"')}${op(",")} ${str(
-      '"S3"'
-    )}${op(",")}`,
-    `${ind(2)}${str('"EC2"')}${op(",")} ${str('"OpenSearch"')}${op(",")} ${str(
-      '"Lambda"'
+    `${ind(1)}${str('"infrastructure"')}${op(":")} ${b2("[")}`,
+    `${ind(2)}${str('"AWS (EC2, Lambda, S3, IAM, Amplify, Load Balancer)"')}${op(
+      ","
     )}`,
+    `${ind(2)}${str('"Supabase"')}${op(",")} ${str('"Vercel"')}${op(",")} ${str(
+      '"Firecracker VMs"'
+    )}${op(",")}`,
+    `${ind(2)}${str('"Authentication Integration"')}`,
     `${ind(1)}${b2("]")}`,
     `${b1("}")}`,
   ];
