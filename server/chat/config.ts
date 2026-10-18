@@ -1,0 +1,12 @@
+export const MODEL_ID = "@preset/free";
+export const MAX_OUTPUT_TOKENS = 800;
+export const MAX_BODY_BYTES = 65_536;
+export const MAX_MESSAGES = 20;
+export const HISTORY_WINDOW = 12;
+export const MAX_USER_CHARS = 2_000;
+export const MAX_ASSISTANT_CHARS = 8_000;
+export const APP_URL = "https://coreybirnie.com";
+export const APP_NAME = "Corey Birnie Portfolio";
+export const CONTACT_EMAIL = "coreybirnie@gmail.com";
+export const UPSTREAM_TIMEOUT_MS = 50_000;
+export const MAX_RETRIES = 1;
