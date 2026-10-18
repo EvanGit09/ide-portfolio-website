@@ -213,7 +213,7 @@ function consoleEasterEgg() {
     "color: #50fa7b; font-size: 16px; font-weight: bold;"
   );
   console.log(
-    "%c Built with vanilla HTML, CSS & JS — no frameworks needed.",
+    "%c Vanilla JS editor shell + a React/assistant-ui chat island.",
     "color: #8be9fd; font-size: 12px;"
   );
   console.log(

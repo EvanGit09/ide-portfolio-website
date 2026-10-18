@@ -164,34 +164,3 @@ export const FILE_LANGUAGES = {
   image: "Image",
   pdf: "PDF Document",
 };
-
-// ============================================================
-// Chat messages
-// ============================================================
-export const CHAT_MESSAGES = [
-  {
-    role: "user",
-    text: "Tell me about Corey Birnie",
-  },
-  {
-    role: "ai",
-    text: `Corey is an Advanced Software Engineer at Worldover in London. He holds a 1st class MEng in Computer Science from Durham University.\n\nHe specialises in full-stack TypeScript/React development and AI-first product architecture. Fun fact: he went from writing embedded C/C++ for missile systems at MBDA to building AI platforms that generate entire web apps!`,
-  },
-  {
-    role: "user",
-    text: "What are his key technical skills?",
-  },
-  {
-    role: "ai",
-    text: "His core stack:",
-    codeBlock: `Languages:    TypeScript, Python, SQL, Java, C++, Haskell\nTechnologies: React, Next.js, tRPC, Postgres, Tailwind, MCP\nInfra:        AWS, Supabase, Vercel, Firecracker VMs\nAI/ML:        PyTorch, Computer Vision, NLP, GANs`,
-  },
-  {
-    role: "user",
-    text: "What's his most impressive achievement?",
-  },
-  {
-    role: "ai",
-    text: `At Worldover, he led the architectural transformation of an entire platform into an "AI-first" appfactory. He also directed the QuickReview feature launch which improved customer efficiency by over 100x, and built AI agents that generate bespoke documents and chase suppliers over email.\n\nHis Master's dissertation is equally impressive — he built an ML pipeline combining computer vision, NLP, and financial modeling to predict stock prices from CEO video interviews.`,
-  },
-];
