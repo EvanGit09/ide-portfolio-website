@@ -1,6 +1,7 @@
 /// <reference types="vitest/config" />
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { chatApiDevPlugin } from "./server/dev/vite-api-plugin.ts";
 
 const nm = (names: string) => new RegExp(`node_modules/(${names})/`);
 
@@ -18,7 +19,7 @@ const VENDOR_GROUPS = [
 ];
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), chatApiDevPlugin()],
   build: {
     outDir: "dist",
     assetsDir: "static",

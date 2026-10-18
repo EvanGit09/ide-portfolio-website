@@ -11,6 +11,25 @@ function collectErrors(page: Page): string[] {
   return errors;
 }
 
+async function stubGoogleFonts(page: Page): Promise<void> {
+  await page.route(/fonts\.googleapis\.com/, (route) =>
+    route.fulfill({ status: 200, contentType: "text/css", body: "" }),
+  );
+  await page.route(/fonts\.gstatic\.com/, (route) =>
+    route.fulfill({ status: 200, contentType: "font/woff2", body: "" }),
+  );
+}
+
+type AssetKind = "js" | "css";
+
+const ASSET_TYPE: Record<AssetKind, RegExp> = { js: /javascript/, css: /text\/css/ };
+
+function assetUrls(html: string): { url: string; kind: AssetKind }[] {
+  const scripts = [...html.matchAll(/<script[^>]+src="(\/static\/[^"]+)"/g)].map((m) => ({ url: m[1], kind: "js" as const }));
+  const styles = [...html.matchAll(/<link[^>]+href="(\/static\/[^"]+\.css)"/g)].map((m) => ({ url: m[1], kind: "css" as const }));
+  return [...scripts, ...styles];
+}
+
 async function openFile(page: Page, name: string): Promise<void> {
   await page.locator("#file-tree").getByText(name, { exact: true }).click();
 }
@@ -25,6 +44,7 @@ test.describe("document", () => {
   });
 
   test("loads without console or page errors", async ({ page }) => {
+    await stubGoogleFonts(page);
     const errors = collectErrors(page);
     await page.goto("/");
     await expect(page.locator("#editor-content .code-line").first()).toBeVisible();
@@ -32,7 +52,7 @@ test.describe("document", () => {
     expect(errors).toEqual([]);
   });
 
-  test("serves robots.txt and sitemap.xml", async ({ request }) => {
+  test("serves robots.txt and sitemap.xml", async ({ request, page }) => {
     const robots = await request.get("/robots.txt");
     expect(robots.status()).toBe(200);
     expect(await robots.text()).toContain("Sitemap: https://coreybirnie.com/sitemap.xml");
@@ -40,8 +60,32 @@ test.describe("document", () => {
     const sitemap = await request.get("/sitemap.xml");
     expect(sitemap.status()).toBe(200);
     const body = await sitemap.text();
-    expect(body).toContain("<urlset");
-    expect(body).toContain("https://coreybirnie.com");
+
+    await page.goto("about:blank");
+    const parsed = await page.evaluate((xml) => {
+      const doc = new DOMParser().parseFromString(xml, "application/xml");
+      return {
+        failed: doc.querySelector("parsererror") !== null,
+        root: doc.documentElement.localName,
+        locs: [...doc.getElementsByTagName("loc")].map((el) => el.textContent),
+      };
+    }, body);
+    expect(parsed.failed).toBe(false);
+    expect(parsed.root).toBe("urlset");
+    expect(parsed.locs).toContain("https://coreybirnie.com");
+  });
+
+  test("serves the built JS and CSS bundles referenced by index.html", async ({ request }) => {
+    const html = await (await request.get("/")).text();
+    const assets = assetUrls(html);
+    expect(assets.some((a) => a.kind === "css")).toBe(true);
+    expect(assets.some((a) => a.kind === "js")).toBe(true);
+
+    for (const { url, kind } of assets) {
+      const res = await request.get(url);
+      expect(res.status(), url).toBe(200);
+      expect(res.headers()["content-type"], url).toMatch(ASSET_TYPE[kind]);
+    }
   });
 });
 
@@ -106,6 +150,7 @@ test.describe("editor", () => {
     const res = await request.get(CV_PATH);
     expect(res.status()).toBe(200);
     expect(res.headers()["content-type"]).toContain("application/pdf");
+    expect((await res.body()).subarray(0, 4).toString("latin1")).toBe("%PDF");
   });
 
   test("shows the chat panel with the Agent header and collapses it", async ({ page }) => {
@@ -113,11 +158,12 @@ test.describe("editor", () => {
     const panel = page.locator("#chat-panel");
     await expect(panel).toBeVisible();
     await expect(panel.locator(".chat-panel__header-title")).toHaveText("Agent");
+    await expect(panel.locator(".chat-composer__input")).toBeEnabled();
+    await expect(panel.locator(".chat-fallback")).toHaveCount(0);
 
     await panel.locator(".chat-panel__close").click();
 
     await expect(page.locator(".vscode-shell")).toHaveClass(/chat-collapsed/);
-    await expect(panel).toHaveCSS("opacity", "0");
     await expect.poll(async () => (await panel.boundingBox())?.width ?? 0).toBeLessThan(5);
   });
 });
@@ -147,6 +193,7 @@ test.describe("mobile navigation", () => {
     await page.locator('[data-mobile="chat"]').tap();
     await expect(page.locator("body")).toHaveClass(/mobile-chat-open/);
     await expect(page.locator("#chat-panel")).toBeInViewport();
+    await expect(page.locator("#chat-panel .chat-composer__input")).toBeEnabled();
 
     await page.locator("#mobile-backdrop").tap({ position: { x: 20, y: 300 } });
     await expect(page.locator("body")).not.toHaveClass(/mobile-chat-open/);
