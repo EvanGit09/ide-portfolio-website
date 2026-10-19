@@ -3,7 +3,7 @@ import { ChatPage } from "./helpers/chat-page";
 import { openExplorerFile, readCspViolations, recordCspViolations } from "./helpers/csp";
 
 const PROD_URL = process.env.PROD_CSP_URL;
-const CHALLENGE_PATH = "/a-4-a/c.js";
+const BOTID_PREFIX = "/149e9513-01fa-4fb0-aad4-566afd725d1b/";
 const CV_PATH = "/assets/Corey_Birnie_CV.pdf";
 const CSP_HEADERS = ["content-security-policy", "content-security-policy-report-only"];
 const FILES = ["work-experience.ts", "projects.ts", "education.ts", "about.tsx", "cv.pdf"];
@@ -36,20 +36,30 @@ test("document carries a CSP and the PDF does not", async ({ request }) => {
 test("production page and chat raise no CSP violations", async ({ page }) => {
   const consoleMessages = collectCspConsole(page);
   await recordCspViolations(page);
-  const challenge = page.waitForResponse((res) => res.url().includes(CHALLENGE_PATH), { timeout: 30_000 });
+  const botIdRequests: string[] = [];
+  page.on("requestfinished", (req) => {
+    if (new URL(req.url()).pathname.startsWith(BOTID_PREFIX)) botIdRequests.push(req.url());
+  });
   const chat = new ChatPage(page);
   await page.goto("/");
 
   for (const file of FILES) await openExplorerFile(page, file, false);
   await expect(chat.input).toBeEnabled({ timeout: 30_000 });
-  await challenge;
 
+  // BotID loads its challenge lazily on the first protected fetch, so it is exercised by sending.
+  const apiResponse = page.waitForResponse(
+    (res) => new URL(res.url()).pathname === "/api/chat" && res.request().method() === "POST",
+    { timeout: 60_000 },
+  );
   await chat.ask("Hi");
-  await expect(chat.lastReply.or(chat.error).first()).toBeVisible({ timeout: 60_000 });
-  await expect(chat.messages.nth(SEEDED_MESSAGE_COUNT)).toBeVisible();
+  const status = (await apiResponse).status();
+  await expect(chat.messages.nth(SEEDED_MESSAGE_COUNT + 1)).toBeVisible({ timeout: 60_000 });
+  await expect(chat.send).toBeVisible({ timeout: 60_000 });
+  process.stdout.write(`/api/chat responded ${status}\n`);
 
   const violations = (await readCspViolations(page)).map(({ directive, blockedURI, sourceFile }) => ({ directive, blockedURI, sourceFile }));
-  process.stdout.write(`${JSON.stringify({ violations, consoleMessages }, null, 2)}\n`);
+  process.stdout.write(`${JSON.stringify({ violations, consoleMessages, botIdRequests }, null, 2)}\n`);
+  expect(botIdRequests.length).toBeGreaterThan(0);
   expect(violations).toEqual([]);
   expect(consoleMessages).toEqual([]);
 });
