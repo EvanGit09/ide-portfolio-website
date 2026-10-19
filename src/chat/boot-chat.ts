@@ -1,10 +1,9 @@
 import { initBotId } from "botid/client/core";
+import { loadMount, type MountModule } from "./load-mount";
 
 const ROOT_ID = "chat-root";
 const IDLE_FALLBACK_MS = 200;
 const DESKTOP_QUERY = "(min-width: 1025px)";
-
-type MountModule = { mountChat: (container: HTMLElement) => void };
 
 export interface BootDeps {
   document: Document;
@@ -52,7 +51,7 @@ export function initChat(): void {
   initBotId({ protect: [{ path: "/api/chat", method: "POST" }] });
   bootChat({
     document,
-    loadMount: () => import("./mount"),
+    loadMount,
     onIdle: defaultOnIdle,
     isDesktop: defaultIsDesktop,
   });

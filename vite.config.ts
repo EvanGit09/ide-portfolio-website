@@ -1,13 +1,15 @@
 /// <reference types="vitest/config" />
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { readCspPolicy } from "./server/dev/csp.ts";
 import { chatApiDevPlugin } from "./server/dev/vite-api-plugin.ts";
 
 const nm = (names: string) => new RegExp(`node_modules/(${names})/`);
 
 const VENDOR_GROUPS = [
   { name: "vendor-react", test: nm("react|react-dom|scheduler"), priority: 40 },
-  { name: "vendor-ai", test: nm("ai|@ai-sdk/[^/]+|@opentelemetry/api|zod|eventsource-parser|json-schema"), priority: 30 },
+  { name: "vendor-zod", test: nm("zod"), priority: 35 },
+  { name: "vendor-ai", test: nm("ai|@ai-sdk/[^/]+|@opentelemetry/api|eventsource-parser|json-schema"), priority: 30 },
   { name: "vendor-assistant-ui", test: nm("@assistant-ui/[^/]+|assistant-stream|assistant-cloud|@radix-ui/[^/]+|nanoid"), priority: 20 },
   {
     name: "vendor-markdown",
@@ -20,6 +22,7 @@ const VENDOR_GROUPS = [
 
 export default defineConfig({
   plugins: [react(), chatApiDevPlugin()],
+  preview: { headers: { "Content-Security-Policy": readCspPolicy() } },
   build: {
     outDir: "dist",
     assetsDir: "static",

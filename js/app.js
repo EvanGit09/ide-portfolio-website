@@ -57,8 +57,7 @@ function renderEditor(pageId, filename, fileType) {
     if (isAboutPage) {
       contentHTML += `<div class="profile-image-container">
         <img class="profile-image profile-image--linkedin" src="assets/linkedin-profile-pic.jpeg"
-             alt="Corey Birnie"
-             onerror="this.style.display='none'">
+             alt="Corey Birnie">
       </div>`;
     }
 
@@ -72,6 +71,9 @@ function renderEditor(pageId, filename, fileType) {
       .join("");
 
     content.innerHTML = contentHTML;
+    content.querySelector(".profile-image")?.addEventListener("error", (event) => {
+      event.currentTarget.style.display = "none";
+    });
 
     // Render gutter
     gutter.innerHTML = lines

@@ -56,6 +56,18 @@ The PDF and the chat's knowledge are separate. When the CV changes:
 | Model output | `server/chat/config.ts` | 800 tokens, 1 retry, 50 s upstream timeout |
 | Daily quota | OpenRouter | 1,000 free-model requests per day (with $10+ credit) |
 
+### Content Security Policy
+
+The policy lives in `vercel.json` as a `Content-Security-Policy-Report-Only` header on `/` and `/index.html` only. It is kept off the CV PDF because a CSP on that response can break Chrome's PDF viewer. `vite preview` reads the same policy through `server/dev/csp.ts` and enforces it, so `npm run test:e2e` fails on any violation (`tests/e2e/csp.spec.ts`).
+
+Check the deployed site (records violations, never run in CI):
+
+```bash
+PROD_CSP_URL=https://coreybirnie.com npx playwright test -c playwright.prod.config.ts
+```
+
+To enforce the policy, rename the header key to `Content-Security-Policy` on both `vercel.json` rules, then redeploy. Run the prod check first and confirm it reports no violations.
+
 ## Deploying to Vercel
 
 The site moved from GitHub Pages to Vercel so the chat API can keep the key server-side. Follow these steps in order. GitHub Pages keeps serving the old site until the DNS change in step 9, so nothing goes down while you set up.
