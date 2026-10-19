@@ -23,7 +23,7 @@ describe("vercel.json security headers", () => {
   });
 });
 
-const CSP_KEY = "Content-Security-Policy-Report-Only";
+const CSP_KEY = "Content-Security-Policy";
 const HTML_SOURCES = ["/", "/index.html"];
 const REQUIRED_DIRECTIVES = [
   "default-src",

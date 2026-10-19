@@ -58,7 +58,7 @@ The PDF and the chat's knowledge are separate. When the CV changes:
 
 ### Content Security Policy
 
-The policy lives in `vercel.json` as a `Content-Security-Policy-Report-Only` header on `/` and `/index.html` only. It is kept off the CV PDF because a CSP on that response can break Chrome's PDF viewer. `vite preview` reads the same policy through `server/dev/csp.ts` and enforces it, so `npm run test:e2e` fails on any violation (`tests/e2e/csp.spec.ts`).
+The policy lives in `vercel.json` as an enforced `Content-Security-Policy` header on `/` and `/index.html` only. It is kept off the CV PDF because a CSP on that response can break Chrome's PDF viewer. `vite preview` reads the same policy through `server/dev/csp.ts` and enforces it, so `npm run test:e2e` fails on any violation (`tests/e2e/csp.spec.ts`).
 
 Check the deployed site (records violations, never run in CI):
 
@@ -66,7 +66,7 @@ Check the deployed site (records violations, never run in CI):
 PROD_CSP_URL=https://coreybirnie.com npx playwright test -c playwright.prod.config.ts
 ```
 
-To enforce the policy, rename the header key to `Content-Security-Policy` on both `vercel.json` rules, then redeploy. Run the prod check first and confirm it reports no violations.
+To change the policy safely, rename both `vercel.json` header keys to `Content-Security-Policy-Report-Only`, deploy, run the prod check, then switch back once it reports no violations. BotID blocks automated browsers, so also send one chat message from a normal browser and check the DevTools console.
 
 ## Deploying to Vercel
 

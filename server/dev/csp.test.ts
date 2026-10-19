@@ -11,7 +11,7 @@ function fixture(config: unknown): string {
 }
 
 describe("readCspPolicy", () => {
-  it("reads the report-only policy for / from the real vercel.json", () => {
+  it("reads the policy for / from the real vercel.json", () => {
     expect(readCspPolicy()).toContain("default-src 'self'");
   });
 
