@@ -76,12 +76,18 @@ describe("ChatPanel", () => {
     expect(within(alert).getByRole("button", { name: /retry/i })).toBeInTheDocument();
   });
 
-  it("hides the hover action bar on a failed reply so Retry is offered once", async () => {
+  it("hides the action bar on a failed reply so Retry is offered once", async () => {
     render(<ChatPanel transport={createMockTransport({ error: new Error("boom") })} />);
     await ask("Hello");
-    await screen.findByRole("alert");
-    expect(screen.queryByRole("button", { name: "Retry response" })).not.toBeInTheDocument();
-    expect(screen.getAllByRole("button", { name: /retry/i })).toHaveLength(1);
+    const failedReply = (await screen.findByRole("alert")).closest(".chat-message") as HTMLElement;
+    expect(within(failedReply).queryByRole("button", { name: "Retry response" })).not.toBeInTheDocument();
+    expect(within(failedReply).getAllByRole("button", { name: /retry/i })).toHaveLength(1);
+  });
+
+  it("always shows the action bar on earlier assistant messages, not just on hover", () => {
+    render(<ChatPanel transport={createMockTransport({})} />);
+    expect(screen.getAllByRole("button", { name: "Copy message" })).toHaveLength(3);
+    expect(screen.getAllByRole("button", { name: "Retry response" })).toHaveLength(3);
   });
 
   it("shows a generic friendly error for plain errors", async () => {

@@ -32,7 +32,7 @@ function ChatError() {
 
 function MessageActions() {
   return (
-    <ActionBarPrimitive.Root hideWhenRunning autohide="not-last" className="chat-actions">
+    <ActionBarPrimitive.Root hideWhenRunning autohide="never" className="chat-actions">
       <ActionBarPrimitive.Copy className="chat-actions__btn" aria-label="Copy message" title="Copy">
         <CopyIcon />
         <CheckIcon />
