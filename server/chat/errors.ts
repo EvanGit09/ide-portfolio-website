@@ -1,5 +1,5 @@
 import { APICallError, RetryError } from "ai";
-import { CONTACT_EMAIL } from "./config";
+import { CONTACT_EMAIL } from "./config.js";
 
 const QUOTA_MESSAGE = `The assistant has reached today's free usage limit. Please try again tomorrow, or email Corey at ${CONTACT_EMAIL}.`;
 export const BUSY_MESSAGE = "The free AI model is busy right now. Please try again in a moment.";

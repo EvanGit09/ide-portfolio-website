@@ -1,9 +1,9 @@
 import { convertToModelMessages, createUIMessageStreamResponse, streamText, toUIMessageStream, type LanguageModel } from "ai";
-import { MAX_OUTPUT_TOKENS, MAX_RETRIES, UPSTREAM_TIMEOUT_MS } from "./config";
-import { BUSY_MESSAGE, logChatError, textResponse, toFriendlyStreamError } from "./errors";
-import { surfaceTimeout } from "./timeout-stream";
-import { buildSystemPrompt } from "./system-prompt";
-import { parseChatRequest } from "./validate-request";
+import { MAX_OUTPUT_TOKENS, MAX_RETRIES, UPSTREAM_TIMEOUT_MS } from "./config.js";
+import { BUSY_MESSAGE, logChatError, textResponse, toFriendlyStreamError } from "./errors.js";
+import { surfaceTimeout } from "./timeout-stream.js";
+import { buildSystemPrompt } from "./system-prompt.js";
+import { parseChatRequest } from "./validate-request.js";
 
 export type ChatHandlerDeps = {
   getModel: () => LanguageModel | null;

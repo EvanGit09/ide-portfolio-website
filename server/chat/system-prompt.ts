@@ -1,5 +1,5 @@
-import { CONTACT_EMAIL } from "./config";
-import { CV_MARKDOWN } from "./cv";
+import { CONTACT_EMAIL } from "./config.js";
+import { CV_MARKDOWN } from "./cv.js";
 
 export function buildSystemPrompt(today: Date): string {
   return `You are "Agent", the AI assistant embedded in Corey Birnie's VS Code-themed portfolio site (coreybirnie.com). Today's date is ${today.toISOString().slice(0, 10)}; use it to work out tenure and durations.

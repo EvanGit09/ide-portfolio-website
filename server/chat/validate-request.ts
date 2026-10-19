@@ -1,6 +1,6 @@
 import { safeValidateUIMessages, type UIMessage } from "ai";
 import { z } from "zod";
-import { HISTORY_WINDOW, MAX_ASSISTANT_CHARS, MAX_BODY_BYTES, MAX_MESSAGES, MAX_USER_CHARS } from "./config";
+import { HISTORY_WINDOW, MAX_ASSISTANT_CHARS, MAX_BODY_BYTES, MAX_MESSAGES, MAX_USER_CHARS } from "./config.js";
 
 export type ParseResult =
   | { ok: true; messages: UIMessage[] }

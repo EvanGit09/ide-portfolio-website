@@ -1,6 +1,6 @@
-import { checkBot } from "../server/chat/bot-check";
-import { createChatHandler } from "../server/chat/handler";
-import { createOpenRouterModel } from "../server/chat/model";
+import { checkBot } from "../server/chat/bot-check.js";
+import { createChatHandler } from "../server/chat/handler.js";
+import { createOpenRouterModel } from "../server/chat/model.js";
 
 const handler = createChatHandler({
   getModel: () => createOpenRouterModel(process.env.OPENROUTER_API_KEY),
